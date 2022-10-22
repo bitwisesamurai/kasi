@@ -36,7 +36,7 @@ export default function Timeline() {
   function handleEvent(name) {
     const now = new Date();
     const newTimeline = [
-      ...timelineItems,
+      ...(timelineItems || []),
       { name, date: now.toISOString(), time: now.toLocaleTimeString() },
     ];
 
@@ -73,7 +73,7 @@ export default function Timeline() {
       <div className={styles.container}>
         <div className="text-3xl font-bold">Timeline</div>
         <div className="mt-4 mx-4">
-          {timelineItems.length
+          {timelineItems && timelineItems.length
             ? timelineItems.map(function (element, index) {
                 return (
                   <div key={`item-${index}`}>
