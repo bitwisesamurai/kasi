@@ -81,14 +81,17 @@ export default function Distance() {
     const changedItem = times[index];
 
     changedItem.checked = value;
-    changedItem.time = new Date().toLocaleTimeString();
 
     if (value) {
+      changedItem.time = new Date().toLocaleTimeString();
+
       setTimes(Object.assign([], times, { [index]: changedItem }));
 
       localStorage.setItem("times", JSON.stringify(times));
     } else {
       if (confirm("Are you sure?")) {
+        changedItem.time = null;
+
         setTimes(Object.assign([], times, { [index]: changedItem }));
 
         localStorage.setItem("times", JSON.stringify(times));
